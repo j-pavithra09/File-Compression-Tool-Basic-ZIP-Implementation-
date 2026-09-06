@@ -252,56 +252,42 @@
 >
 > Two use-case diagrams are provided below, covering the compression workflow and the decompression workflow.
 
-<img src="media/image1.png" style="width:4.47917in;height:3.125in" />
+<img src="media/b50d63c71d4cfa1326e928350a0188ad2428664c.png" style="width:4.47917in;height:3.125in" />
 
-*Use-Case Diagram - File Compression Workflow (Select Input File → Compress File / Huffman Encode → View Compression Statistics → Save Compressed File)*
+*Figure 1: Use-Case Diagram - File Compression Workflow (Select Input File → Compress File / Huffman Encode → View Compression Statistics → Save Compressed File)*
 
-<img src="media/image2.png" style="width:4.47917in;height:3.125in" />
+<img src="media/a6b6246047faf9ee6d56798568cc8c338f6d417a.png" style="width:4.47917in;height:3.125in" />
 
-*Use-Case Diagram - File Decompression Workflow (Select Compressed File → Validate Header / Metadata → Decompress File / Huffman Decode → Save Original File → View Status / Error Message)*
+*Figure 2: Use-Case Diagram - File Decompression Workflow (Select Compressed File → Validate Header / Metadata → Decompress File / Huffman Decode → Save Original File → View Status / Error Message)*
 
 **9. Requirements Traceability Matrix (RTM)**
 
-**Status legend:** N = Not tested, P = Partially tested, A = All tests passed
-
-## Functional Requirements
-
-| Req ID | Requirement (short) | Section Ref | Module | Test Case(s) | Status (N/P/A) | Comments |
-|---|---|---|---|---|---|---|
-| FCT-F-001 | Accept input file | 4.1 / DS-IO-01 | File I/O Module | TC-COMP-01 | N | Entry point for compression flow. |
-| FCT-F-002 | Read file in binary, unaltered | 4.1 / DS-IO-02 | File I/O Module | TC-COMP-02 | N | Verify with read-only checks; no write occurs during the compression read. |
-| FCT-F-003 | Frequency analysis | 4.1 / DS-HUFF-01 | Frequency Module | TC-HUFF-01 | N | Feeds the tree-construction step. |
-| FCT-F-004 | Build Huffman tree | 4.2 / DS-HUFF-02 | Huffman Module | TC-HUFF-02 | N | Core algorithm; verify with edge cases (1 symbol). |
-| FCT-F-005 | Generate prefix codes | 4.2 / DS-HUFF-03 | Huffman Module | TC-HUFF-03 | N | Check prefix-free property explicitly in tests. |
-| FCT-F-006 | Encode bitstream | 4.3 / DS-ENC-01 | Encoder Module | TC-COMP-03 | N | Bit-level packing; watch byte alignment/padding. |
-| FCT-F-007 | Write metadata/header | 4.3 / DS-FMT-01 | File Format Module | TC-FMT-01 | N | Defines the custom compressed-file format. |
-| FCT-F-008 | Create compressed output file | 4.3 / DS-IO-03 | File I/O Module | TC-COMP-04 | N | Confirm output extension (e.g. .huff) and writable destination path. |
-| FCT-F-009 | Display compression statistics | 4.3 / DS-UI-01 | CLI / UI Module | TC-UI-01 | N | Depends on FCT-F-006/007/008 completing successfully first. |
-| FCT-F-010 | Accept compressed file for decompression | 4.4 / DS-IO-04 | File I/O Module | TC-DECOMP-01 | N | Entry point for decompression flow; mirrors FCT-F-001. |
-| FCT-F-011 | Validate compressed header | 4.4 / DS-DEC-01 | Decoder Module | TC-DECOMP-02 | N | Shared logic with FCT-SR-005 rejection path. |
-| FCT-F-012 | Reconstruct Huffman decoding structure | 4.4 / DS-HUFF-04 | Huffman Module | TC-HUFF-04 | N | Must reproduce the identical tree shape used during encoding. |
-| FCT-F-013 | Decode original data | 4.4 / DS-DEC-02 | Decoder Module | TC-DECOMP-03 | N | Must match the FCT-NF-001 byte-for-byte guarantee. |
-| FCT-F-014 | Write decompressed data to output file | 4.4 / DS-IO-05 | File I/O Module | TC-DECOMP-04 | N | Final integrity checkpoint; compare against FCT-NF-001. |
-| FCT-F-015 | Handle file errors | 4.5 / DS-ERR-01 | Error Handling Module | TC-ERR-01 | N | Central error-reporting path used across modules. |
-| FCT-F-016 | Avoid overwrite without confirmation | 4.5 / DS-ERR-02 | CLI / Error Handling Module | TC-ERR-02 | N | Shared logic with FCT-SR-003 overwrite protection. |
-
-## Non-Functional Requirements
-
-| Req ID | Requirement (short) | Section Ref | Module | Test Case(s) | Status (N/P/A) | Comments |
-|---|---|---|---|---|---|---|
-| FCT-NF-001 | Data integrity | 5 / DS-INT-01 | Compression/Decompression | TC-NF-01 | N | Regression-test with diverse file types. |
-| FCT-NF-002 | Processing performance | 5 / DS-PERF-01 | Core Modules | TC-PERF-01 | N | Benchmark, not a strict pass/fail gate. |
-| FCT-NF-003 | Bounded memory/storage usage | 5 / DS-PERF-02 | Core Modules | TC-PERF-02 | N | Consider streaming/chunked I/O for large files. |
-| FCT-NF-004 | CLI usability | 5 / DS-UX-01 | CLI / UI Module | TC-UX-01 | N | Document CLI usage in README; test with a new user. |
-| FCT-NF-005 | Portability | 5 / DS-PORT-01 | Build / Platform Layer | TC-PORT-01 | N | Target at least one Windows and one Linux build. |
-| FCT-NF-006 | No silent data corruption | 5 / DS-REL-01 | Error Handling Module | TC-REL-01 | N | Overlaps with FCT-SR-002; test with injected I/O failures. |
-
-## Security Requirements
-
-| Req ID | Requirement (short) | Section Ref | Module | Test Case(s) | Status (N/P/A) | Comments |
-|---|---|---|---|---|---|---|
-| FCT-SR-001 | Validate metadata | 6.2 / DS-SEC-01 | File Format Module | TC-SEC-01 | N | Run with fuzzed/corrupted headers. |
-| FCT-SR-002 | Report file-access failures | 6.2 / DS-SEC-02 | File I/O Module | TC-SEC-02 | N | Supports FCT-NF-006 no-silent-corruption guarantee. |
-| FCT-SR-003 | Prevent overwrite | 6.2 / DS-SEC-02 | CLI / File I/O Module | TC-SEC-03 | N | Verify prompt/flag behavior in the CLI. |
-| FCT-SR-004 | Validate output paths | 6.2 / DS-SEC-04 | File I/O Module | TC-SEC-04 | N | Covers permissions and non-existent directories. |
-| FCT-SR-005 | Reject incomplete headers | 6.2 / DS-SEC-05 | File Format Module | TC-SEC-05 | N | Prevents crashes/undefined behavior on bad input; shares logic with FCT-F-011. |
+| **Req ID** | **Requirement (short)**                  | **Section Ref**  | **Module**                | **Test Case(s)** | **Status (N/P/A)** | **Comments**                                       |
+|------------|------------------------------------------|------------------|---------------------------|------------------|--------------------|----------------------------------------------------|
+| FCT-F-001  | Accept input file path                   | 4.1 / DS-IO-01   | File I/O Module           | TC-COMP-01       | N                  | Entry point for compression flow.                  |
+| FCT-F-002  | Read file in binary mode                 | 4.1 / DS-IO-02   | File I/O Module           | TC-COMP-02       | N                  | Must not alter original file.                      |
+| FCT-F-003  | Frequency analysis                       | 4.1 / DS-HUFF-01 | Frequency Module          | TC-HUFF-01       | N                  | Feeds tree-construction step.                      |
+| FCT-F-004  | Build Huffman tree                       | 4.2 / DS-HUFF-02 | Huffman Module            | TC-HUFF-02       | N                  | Core algorithm; verify with edge cases (1 symbol). |
+| FCT-F-005  | Generate prefix codes                    | 4.2 / DS-HUFF-03 | Huffman Module            | TC-HUFF-03       | N                  | Check prefix-free property explicitly in tests.    |
+| FCT-F-006  | Encode bitstream                         | 4.3 / DS-ENC-01  | Encoder Module            | TC-COMP-03       | N                  | Bit-level packing; watch byte alignment/padding.   |
+| FCT-F-007  | Write metadata/header                    | 4.3 / DS-FMT-01  | File Format Module        | TC-FMT-01        | N                  | Defines the custom compressed-file format.         |
+| FCT-F-008  | Create compressed output file            | 4.3 / DS-IO-03   | File I/O Module           | TC-COMP-04       | N                  | Requires writable destination.                     |
+| FCT-F-009  | Display compression statistics           | 4.3 / DS-UI-01   | CLI / UI Module           | TC-UI-01         | N                  | Original size, compressed size, ratio.             |
+| FCT-F-010  | Accept compressed file for decompression | 4.4 / DS-IO-04   | File I/O Module           | TC-DECOMP-01     | N                  | Requires valid tool-generated file.                |
+| FCT-F-011  | Validate compressed header               | 4.4 / DS-DEC-01  | Decoder Module            | TC-DECOMP-02     | N                  | Shared logic with FCT-SR-005 rejection path.       |
+| FCT-F-012  | Reconstruct Huffman decoding structure   | 4.4 / DS-DEC-02  | Decoder Module            | TC-HUFF-04       | N                  | Depends on stored metadata.                        |
+| FCT-F-013  | Decode original data                     | 4.4 / DS-DEC-03  | Decoder Module            | TC-DECOMP-03     | N                  | Must match FCT-NF-001 byte-for-byte guarantee.     |
+| FCT-F-014  | Write decompressed output file           | 4.4 / DS-IO-05   | File I/O Module           | TC-DECOMP-04     | N                  | Byte-for-byte match with original.                 |
+| FCT-F-015  | Handle file errors                       | 4.5 / DS-ERR-01  | Error Handling Module     | TC-ERR-01        | N                  | Central error-reporting path used across modules.  |
+| FCT-F-016  | Avoid overwrite without confirmation     | 4.5 / DS-ERR-02  | CLI / File I/O Module     | TC-ERR-02        | N                  | Depends on CLI design.                             |
+| FCT-NF-001 | Data integrity                           | 5 / DS-INT-01    | Compression/Decompression | TC-NF-01         | N                  | Regression-test with diverse file types.           |
+| FCT-NF-002 | Processing performance                   | 5 / DS-PERF-01   | Core Modules              | TC-PERF-01       | N                  | Benchmark, not a strict pass/fail gate.            |
+| FCT-NF-003 | Memory / resource usage                  | 5 / DS-PERF-02   | Core Modules              | TC-PERF-02       | N                  | Avoid unbounded in-memory copies.                  |
+| FCT-NF-004 | CLI usability                            | 5 / DS-UX-01     | CLI Module                | TC-UX-01         | N                  | Documented commands and messages.                  |
+| FCT-NF-005 | Portability                              | 5 / DS-PORT-01   | Build / Core Modules      | TC-PORT-01       | N                  | Build on at least Windows and Linux.               |
+| FCT-NF-006 | No silent data corruption                | 5 / DS-REL-01    | Error Handling Module     | TC-REL-01        | N                  | Overlaps with FCT-SR-002.                          |
+| FCT-SR-001 | Validate compressed-file metadata        | 6.2 / DS-SEC-01  | File Format Module        | TC-SEC-01        | N                  | Run with fuzzed/corrupted headers.                 |
+| FCT-SR-002 | Report file-access failures              | 6.2 / DS-SEC-02  | File I/O Module           | TC-SEC-02        | N                  | No false success on failed read/write.             |
+| FCT-SR-003 | Prevent accidental overwrite             | 6.2 / DS-SEC-03  | CLI / File I/O Module     | TC-SEC-03        | N                  | Verify prompt/flag behavior in CLI.                |
+| FCT-SR-004 | Validate output paths                    | 6.2 / DS-SEC-04  | File I/O Module           | TC-SEC-04        | N                  | Covers permissions and non-existent dirs.          |
+| FCT-SR-005 | Reject invalid compressed headers        | 6.2 / DS-SEC-05  | Decoder Module            | TC-SEC-05        | N                  | No unsafe/undefined decoding attempted.            |
