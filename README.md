@@ -252,7 +252,7 @@
 >
 > Two use-case diagrams are provided below, covering the compression workflow and the decompression workflow.
 
-<img src="uml/Screenshot 2026-09-04 224901.png" />
+<img src="uml/compression.png" />
 
 *Figure 1: Use-Case Diagram - File Compression Workflow (Select Input File → Compress File / Huffman Encode → View Compression Statistics → Save Compressed File)*
 
