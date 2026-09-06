@@ -256,7 +256,7 @@
 
 *Figure 1: Use-Case Diagram - File Compression Workflow (Select Input File → Compress File / Huffman Encode → View Compression Statistics → Save Compressed File)*
 
-<img src="media/a6b6246047faf9ee6d56798568cc8c338f6d417a.png" style="width:4.47917in;height:3.125in" />
+<img src="uml/decompression.png" />
 
 *Figure 2: Use-Case Diagram - File Decompression Workflow (Select Compressed File → Validate Header / Metadata → Decompress File / Huffman Decode → Save Original File → View Status / Error Message)*
 
