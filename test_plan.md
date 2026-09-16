@@ -1,9 +1,11 @@
 Software Test Plan (STP) 
-Project:file compression (zip file basic implementation)
-Version: 1.0 
-Authors:team5
-Date: 16-09-2026
-Status: Draft 
+- Project:File compression (zip file basic implementation)
+- Version: 1.0 
+- Authors:Team5
+- Date: 16-09-2026
+- Status: Draft
+
+  
 1. Introduction 
 Purpose: This document defines the test plan for the File Compression Tool v1.0. It outlines the objectives, scope, strategy, resources, schedule, and responsibilities for testing the compression and decompression functionality built on Huffman coding.
 
