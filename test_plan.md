@@ -13,7 +13,7 @@ References: File Compression Tool SRS v1.0, design specifications (DS-IO, DS-HUF
 
 Definitions: SRS (Software requirements specification), RTM (requirements traceability matrix), CLI (Command Line Interface), NFR (Non-functional requirement), TC (Test Case).
 
-3. Test Items 
+2. Test Items 
 - File I/O Module
 - Frequency Analysis Module
 - Huffman Tree / Code Generation Module
