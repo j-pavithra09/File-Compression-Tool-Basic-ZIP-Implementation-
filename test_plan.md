@@ -92,12 +92,12 @@ Milestones:
 - UAT: 22-Sep-2026 to 25-Sep-2026
 
 8. Test Deliverables 
--Test Plan (the above document) - Defines objectives, scope, strategy, schedule, and responsibilities. 
--Test Case (manual/automated test cases correlated with RTM) 
-  -Functional - Manual test cases for FCT-F-001 to FCT-F-016 covering compression, decompression, and error handling. 
-  -NFR & Security - Test cases for FCT-NF-001 to FCT-NF-006 and FCT-SR-001 to FCT-SR-005. 
--Test Data (file repository) - Prepared test input files: empty, single-symbol, small/medium text, binary, large file. 
--Test Logs - CLI output screenshots or text logs capturing pass/fail results for each test case. 
--Defect Log - GitHub Issues raised for each failed test, with steps to reproduce and severity. 
--Test Summary Report - Final report summarising % passed/failed, open defects, requirement coverage, and sign-off recommendation. 
--RTM (updated) - RTM with Status column filled (P/N/A) for every FCT-F, FCT-NF, and FCT-SR requirement. 
+- Test Plan (the above document) - Defines objectives, scope, strategy, schedule, and responsibilities. 
+- Test Case (manual/automated test cases correlated with RTM) 
+  - Functional - Manual test cases for FCT-F-001 to FCT-F-016 covering compression, decompression, and error handling. 
+  - NFR & Security - Test cases for FCT-NF-001 to FCT-NF-006 and FCT-SR-001 to FCT-SR-005. 
+- Test Data (file repository) - Prepared test input files: empty, single-symbol, small/medium text, binary, large file. 
+- Test Logs - CLI output screenshots or text logs capturing pass/fail results for each test case. 
+- Defect Log - GitHub Issues raised for each failed test, with steps to reproduce and severity. 
+- Test Summary Report - Final report summarising % passed/failed, open defects, requirement coverage, and sign-off recommendation. 
+- RTM (updated) - RTM with Status column filled (P/N/A) for every FCT-F, FCT-NF, and FCT-SR requirement. 
