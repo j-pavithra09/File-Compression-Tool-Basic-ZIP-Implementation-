@@ -149,7 +149,7 @@ Resume testing if:
 -    The test environment is restored and verified.
 
 
-13. Test Case Management & Traceability 
+13. Test Case Management & Traceability :
 The RTM ensures every SRS requirement maps to at least one test case. Examples:
 - FCT-F-004 (Build Huffman tree) → TC-HUFF-02
 - FCT-F-013 (Decode bitstream) → TC-DECOMP-03
