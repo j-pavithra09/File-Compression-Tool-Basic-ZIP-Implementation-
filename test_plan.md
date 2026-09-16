@@ -1,4 +1,4 @@
-Software Test Plan (STP) 
+Software Test Plan (STP)
 - Project:File compression (zip file basic implementation)
 - Version: 1.0 
 - Authors:Team5
