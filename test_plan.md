@@ -5,11 +5,15 @@ Authors:team5
 Date: 16-09-2026
 Status: Draft 
 1. Introduction 
-Purpose: This document defines the test plan for the File Compression Tool v1.0. It outlines the objectives, scope, strategy, resources, schedule, and responsibilities for testing the compression and decompression functionality built on Huffman coding. 
+Purpose: This document defines the test plan for the File Compression Tool v1.0. It outlines the objectives, scope, strategy, resources, schedule, and responsibilities for testing the compression and decompression functionality built on Huffman coding.
+
 Scope:Test scope includes the entire process of CLI tool usage: file reading, frequency analysis, Huffman tree creation, codes creation, bits string creation, metadata/header storing, compressed file creation, file decompression, header integrity, and exact reproduction of original file. GUI testing, Zip file format compatibility, and behavior on servers/networks are not part of test scope since it is a CLI utility without these features.
+
 References: File Compression Tool SRS v1.0, design specifications (DS-IO, DS-HUFF, DS-ENC, DS-FMT, DS-DEC, DS-ERR, DS-SEC series), RTM v1.0.
+
 Definitions: SRS (Software requirements specification), RTM (requirements traceability matrix), CLI (Command Line Interface), NFR (Non-functional requirement), TC (Test Case).
-2. Test Items 
+
+3. Test Items 
 - File I/O Module
 - Frequency Analysis Module
 - Huffman Tree / Code Generation Module
