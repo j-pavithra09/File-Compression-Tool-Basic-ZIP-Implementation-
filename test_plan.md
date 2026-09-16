@@ -72,3 +72,32 @@ Exit Criteria: All high priority test cases planned are executed; no critical bu
 - Ensure overwrite protection messages work as expected and cannot be accidentally circumvented 
 - Test with invalid/inaccessible output directories (nonexistent/unaccessible directory
 - Simple fuzzing of the compressed-file header using random/defective byte sequences to ensure that there is no crash or undefined behavior
+
+
+6. Test Environment 
+Hardware: Standard desktop/laptop, minimum 4 GB RAM, with local storage for test files.
+Software: File Compression Tool v1.0 build; C/C++ compiler toolchain (GCC/G++ on Linux, MSVC on Windows); target OS: Windows and Linux, per FCT-NF-005 portability requirement.
+
+
+Tools: Git/GitHub Issues for defect tracking 
+Shell scripting  command for basic performance benchmarking (FCT-NF-002) 
+Test Data: A sample corpus of file – blank file, file with unique symbol only, small text file, large text file, small binary file, large binary file, and corrupt/truncated files to test the compression/decompression.
+
+7. Test Schedule 
+Milestones: 
+- Test case design: 05-Sep-2026
+- Environment setup: 07-Sep-2026
+- Test execution start: 08-Sep-2026
+- Test execution end: 20-Sep-2026
+- UAT: 22-Sep-2026 to 25-Sep-2026
+
+8. Test Deliverables 
+-Test Plan (the above document) - Defines objectives, scope, strategy, schedule, and responsibilities. 
+-Test Case (manual/automated test cases correlated with RTM) 
+  -Functional - Manual test cases for FCT-F-001 to FCT-F-016 covering compression, decompression, and error handling. 
+  -NFR & Security - Test cases for FCT-NF-001 to FCT-NF-006 and FCT-SR-001 to FCT-SR-005. 
+-Test Data (file repository) - Prepared test input files: empty, single-symbol, small/medium text, binary, large file. 
+-Test Logs - CLI output screenshots or text logs capturing pass/fail results for each test case. 
+-Defect Log - GitHub Issues raised for each failed test, with steps to reproduce and severity. 
+-Test Summary Report - Final report summarising % passed/failed, open defects, requirement coverage, and sign-off recommendation. 
+-RTM (updated) - RTM with Status column filled (P/N/A) for every FCT-F, FCT-NF, and FCT-SR requirement. 
