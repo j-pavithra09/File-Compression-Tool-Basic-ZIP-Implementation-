@@ -1,9 +1,9 @@
 # Software Architecture and Design Specification
 
-**Project:** File Compression Tool (Basic ZIP Implementation)
-**Version:** 1.0
-**Authors:** Team 05
-**Date:** 03-10-2026
+**Project:** File Compression Tool (Basic ZIP Implementation)<br>
+**Version:** 1.0<br>
+**Authors:** Team 05<br>
+**Date:** 03-10-2026<br>
 **Status:** Completed
 
 ---
