@@ -101,8 +101,8 @@ Describes the system architecture, UML diagrams, component design, API design, a
 | Project Team | Reliability and performance |
 
 ### 3.3 Component (UML) Diagram
+<img width="705" height="416" alt="component_diagram" src="https://github.com/user-attachments/assets/a59211d7-5686-465c-9622-475d6f3684ef" />
 
-> See the component diagram image in the repository (`/docs/component_diagram.png`).
 
 **Components and relationships:**
 
@@ -208,7 +208,8 @@ The File Compression Tool uses modular components for separation of concerns and
 
 #### Sequence Diagram 1: Huffman Code Generation
 
-> See `docs/sequence_diagram_1.png`
+<img width="782" height="301" alt="Screenshot 2026-10-03 231454" src="https://github.com/user-attachments/assets/337d966a-8abe-4ad4-bd20-74aa5b4f2cb5" />
+
 
 **Flow:**
 1. User starts compression (selects input file).
@@ -224,7 +225,8 @@ The File Compression Tool uses modular components for separation of concerns and
 
 #### Sequence Diagram 2: Huffman Tree Construction
 
-> See `docs/sequence_diagram_2.png`
+<img width="723" height="236" alt="Screenshot 2026-10-03 231509" src="https://github.com/user-attachments/assets/2ad0772f-695f-49f0-ac73-3726526fc240" />
+
 
 **Flow:**
 1. Main Program → Frequency Analysis Module: request byte frequencies from input file.
@@ -236,7 +238,8 @@ The File Compression Tool uses modular components for separation of concerns and
 
 #### Sequence Diagram 3: File Decompression Workflow
 
-> See `docs/decompression_sequence_diagram.png`
+<img width="623" height="401" alt="Screenshot 2026-10-03 231739" src="https://github.com/user-attachments/assets/858c344c-a0e5-4a2f-abd8-59918841ba0b" />
+
 
 **Flow:**
 1. User starts decompression (selects compressed file).
